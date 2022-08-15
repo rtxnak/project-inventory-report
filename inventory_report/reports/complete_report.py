@@ -9,8 +9,8 @@ class CompleteReport(SimpleReport):
         for product in products:
             products_by_companies_name[product["nome_da_empresa"]] += 1
         products_by_company = ""
-        for company in products_by_companies_name.items():
-            products_by_company += f"- {company[0]}: {company[1]}\n"
+        for company, quantity in products_by_companies_name.items():
+            products_by_company += f"- {company}: {quantity}\n"
         return products_by_company
 
     @classmethod
