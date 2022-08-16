@@ -14,9 +14,9 @@ class SimpleReport:
 
     def closest_expiration_date(products):
         current_date = date.today().strftime("%Y-%m-%d")
-        closest_expiration_date = (date.today() + timedelta(days=90)).strftime(
-            "%Y-%m-%d"
-        )
+        closest_expiration_date = (
+            date.today() + timedelta(days=900000)
+        ).strftime("%Y-%m-%d")
         for product in products:
             validation_date = product["data_de_validade"]
             if (
