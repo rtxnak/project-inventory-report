@@ -1,5 +1,4 @@
 from datetime import date, timedelta
-from statistics import mode
 
 
 class SimpleReport:
@@ -27,10 +26,17 @@ class SimpleReport:
         return closest_expiration_date
 
     def company_with_the_most_products(products):
-        company_with_the_most_products = mode(
-            product["nome_da_empresa"] for product in products
+        value = 0
+        company_list = list(
+            set([product["nome_da_empresa"] for product in products])
         )
-        return company_with_the_most_products
+
+        company_dict = dict.fromkeys(company_list, value)
+
+        for product in products:
+            company_dict[product["nome_da_empresa"]] += 1
+
+        return max(company_dict, key=company_dict.get)
 
     @classmethod
     def generate(self, products):
